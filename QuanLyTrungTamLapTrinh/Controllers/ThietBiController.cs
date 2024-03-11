@@ -10,85 +10,85 @@ using QuanLyTrungTamLapTrinh.Models;
 
 namespace QuanLyTrungTamLapTrinh.Controllers
 {
-    public class HocVienController : Controller
+    public class ThietBiController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public HocVienController(ApplicationDbContext context)
+        public ThietBiController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: HocVien
+        // GET: ThietBi
         public async Task<IActionResult> Index()
         {
-            return View(await _context.HocVien.ToListAsync());
+            return View(await _context.ThietBi.ToListAsync());
         }
 
-        // GET: HocVien/Details/5
-        public async Task<IActionResult> Details(string id)
+        // GET: ThietBi/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var hocVien = await _context.HocVien
+            var thietBi = await _context.ThietBi
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (hocVien == null)
+            if (thietBi == null)
             {
                 return NotFound();
             }
 
-            return View(hocVien);
+            return View(thietBi);
         }
 
-        // GET: HocVien/Create
+        // GET: ThietBi/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: HocVien/Create
+        // POST: ThietBi/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,HoTen,SoDT,SoCCCD,GioiTinh,Email,DiaChi,GhiChu,TinhTrang,HinhAnh")] HocVien hocVien)
+        public async Task<IActionResult> Create([Bind("Id,TenTB,MoTa,GhiChu")] ThietBi thietBi)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(hocVien);
+                _context.Add(thietBi);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(hocVien);
+            return View(thietBi);
         }
 
-        // GET: HocVien/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: ThietBi/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var hocVien = await _context.HocVien.FindAsync(id);
-            if (hocVien == null)
+            var thietBi = await _context.ThietBi.FindAsync(id);
+            if (thietBi == null)
             {
                 return NotFound();
             }
-            return View(hocVien);
+            return View(thietBi);
         }
 
-        // POST: HocVien/Edit/5
+        // POST: ThietBi/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,HoTen,SoDT,SoCCCD,GioiTinh,Email,DiaChi,GhiChu,TinhTrang,HinhAnh")] HocVien hocVien)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TenTB,MoTa,GhiChu")] ThietBi thietBi)
         {
-            if (id != hocVien.Id)
+            if (id != thietBi.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace QuanLyTrungTamLapTrinh.Controllers
             {
                 try
                 {
-                    _context.Update(hocVien);
+                    _context.Update(thietBi);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!HocVienExists(hocVien.Id))
+                    if (!ThietBiExists(thietBi.Id))
                     {
                         return NotFound();
                     }
@@ -113,45 +113,45 @@ namespace QuanLyTrungTamLapTrinh.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(hocVien);
+            return View(thietBi);
         }
 
-        // GET: HocVien/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: ThietBi/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var hocVien = await _context.HocVien
+            var thietBi = await _context.ThietBi
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (hocVien == null)
+            if (thietBi == null)
             {
                 return NotFound();
             }
 
-            return View(hocVien);
+            return View(thietBi);
         }
 
-        // POST: HocVien/Delete/5
+        // POST: ThietBi/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var hocVien = await _context.HocVien.FindAsync(id);
-            if (hocVien != null)
+            var thietBi = await _context.ThietBi.FindAsync(id);
+            if (thietBi != null)
             {
-                _context.HocVien.Remove(hocVien);
+                _context.ThietBi.Remove(thietBi);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool HocVienExists(string id)
+        private bool ThietBiExists(int id)
         {
-            return _context.HocVien.Any(e => e.Id == id);
+            return _context.ThietBi.Any(e => e.Id == id);
         }
     }
 }
