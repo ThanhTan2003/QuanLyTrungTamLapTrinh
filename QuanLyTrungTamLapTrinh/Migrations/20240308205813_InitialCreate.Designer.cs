@@ -12,7 +12,7 @@ using QuanLyTrungTamLapTrinh.Data;
 namespace QuanLyTrungTamLapTrinh.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240306164029_InitialCreate")]
+    [Migration("20240308205813_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -99,6 +99,10 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                     b.Property<string>("GhiChu")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("GioiTinh")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("HinhAnh")
                         .HasColumnType("nvarchar(max)");
 
@@ -108,6 +112,9 @@ namespace QuanLyTrungTamLapTrinh.Migrations
 
                     b.Property<int?>("Luong")
                         .HasColumnType("int");
+
+                    b.Property<string>("SoCCCD")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SoDT")
                         .IsRequired()
@@ -177,11 +184,18 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                     b.Property<string>("GhiChu")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("GioiTinh")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("HinhAnh")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HoTen")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SoCCCD")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SoDT")
@@ -327,9 +341,6 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("GhiChu")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HinhAnh")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MoTa")

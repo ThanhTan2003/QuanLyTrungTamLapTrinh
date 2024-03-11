@@ -1,0 +1,60 @@
+﻿<form method="post" asp-action="Create" enctype="multipart/form-data">
+<div class="container mx-auto">
+    <br><br>
+    <h1 class="text-2xl font-bold mb-4 text-left">THÊM MỚI HỌC VIÊN</h1>
+    <hr><br>
+    <form action="/them-moi-hoc-vien" method="post" class="grid grid-cols-2 gap-4">
+        <div class="mb-2">
+            <label for="id" class="block mb-2 text-gray-700 font-bold text-sm">Mã học viên</label>
+            <input type="text" id="id" name="id" class="border-2 border-gray-300 rounded-lg py-2 px-4 w-full">
+        </div>
+        <div class="mb-2">
+            <label for="hoten" class="block mb-2 text-gray-700 font-bold text-sm">Họ và tên</label>
+            <input type="text" id="hoten" name="hoten" class="border-2 border-gray-300 rounded-lg py-2 px-4 w-full">
+        </div>
+        <div class="mb-2">
+            <label for="sdt" class="block mb-2 text-gray-700 font-bold text-sm">Số điện thoại</label>
+            <input type="text" id="sdt" name="sdt" class="border-2 border-gray-300 rounded-lg py-2 px-4 w-full">
+        </div>
+        <div class="mb-2">
+            <label for="cccd" class="block mb-2 text-gray-700 font-bold text-sm">Căn cước công dân</label>
+            <input type="text" id="cccd" name="cccd" class="border-2 border-gray-300 rounded-lg py-2 px-4 w-full">
+        </div>
+        <div class="mb-2">
+            <label for="gioitinh" class="block mb-2 text-gray-700 font-bold text-sm">Giới tính</label>
+            <select id="gioitinh" name="gioitinh" class="border-2 border-gray-300 rounded-lg py-2 px-4 w-full">
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+            </select>
+        </div>
+        <div class="mb-2">
+            <label for="email" class="block mb-2 text-gray-700 font-bold text-sm">Email</label>
+            <input type="email" id="email" name="email" class="border-2 border-gray-300 rounded-lg py-2 px-4 w-full">
+        </div>
+        <div class="mb-2">
+            <label for="diachi" class="block mb-2 text-gray-700 font-bold text-sm">Địa chỉ</label>
+            <textarea id="diachi" name="diachi" class="border-2 border-gray-300 rounded-lg py-2 px-4 w-full"></textarea>
+        </div>
+        <div class="mb-2">
+            <label for="ghichu" class="block mb-2 text-gray-700 font-bold text-sm">Ghi chú</label>
+            <textarea id="ghichu" name="ghichu" class="border-2 border-gray-300 rounded-lg py-2 px-4 w-full"></textarea>
+        </div>
+        <div class="mb-2">
+            <label for="tinhtrang" class="block mb-2 text-gray-700 font-bold text-sm">Tình trạng</label>
+            <select id="tinhtrang" name="tinhtrang" class="border-2 border-gray-300 rounded-lg py-2 px-4 w-full">
+                <option value="Đang học">Đang học</option>
+                <option value="Nghỉ học">Nghỉ học</option>
+            </select>
+        </div>
+        <div class="mb-2">
+            <label for="hinhanh" class="block mb-2 text-gray-700 font-bold text-sm">Hình ảnh</label>
+            <input type="file" id="hinhanh" name="hinhanh" class="border-2 border-gray-300 rounded-lg py-2 px-4 w-full">
+        </div>
+    </form>
+    <br>
+    <div class="flex justify-end">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Thêm mới</button>
+    </div>
+
+</div>
+</form>

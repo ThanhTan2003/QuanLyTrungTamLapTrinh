@@ -9,6 +9,5 @@ namespace QuanLyTrungTamLapTrinh.Models
         public string TenTB { get; set; }
         public string? MoTa { get; set; }
         public string? GhiChu { get; set; }
-        public string? HinhAnh { get; set; }
     }
 }

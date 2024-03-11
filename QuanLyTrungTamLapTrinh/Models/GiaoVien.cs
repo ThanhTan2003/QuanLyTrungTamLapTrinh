@@ -10,6 +10,8 @@ namespace QuanLyTrungTamLapTrinh.Models
 
         [DataType(DataType.PhoneNumber)]
         public string SoDT { get; set; }
+        public string? SoCCCD { get; set; }
+        public string GioiTinh { get; set; }
 
         [DataType(DataType.PhoneNumber)]
         public string? Email { get; set; }

@@ -18,6 +18,8 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     HoTen = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SoDT = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SoCCCD = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GioiTinh = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DiaChi = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ChuyenMon = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -38,6 +40,8 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     HoTen = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SoDT = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SoCCCD = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GioiTinh = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DiaChi = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -102,8 +106,7 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TenTB = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MoTa = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HinhAnh = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
