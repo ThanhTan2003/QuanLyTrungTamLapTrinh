@@ -3,9 +3,9 @@
 
 (function(mod) {
   if (typeof exports == "object" && typeof module == "object") // CommonJS
-    mod(require("../../lib/codemirror"), require("../../addon/mode/simple"), require("../../addon/mode/multiplex"));
+    mod(require("~/AdminTE/lib/codemirror"), require("~/AdminTE/addon/mode/simple"), require("~/AdminTE/addon/mode/multiplex"));
   else if (typeof define == "function" && define.amd) // AMD
-    define(["../../lib/codemirror", "../../addon/mode/simple", "../../addon/mode/multiplex"], mod);
+    define(["~/AdminTE/lib/codemirror", "~/AdminTE/addon/mode/simple", "~/AdminTE/addon/mode/multiplex"], mod);
   else // Plain browser env
     mod(CodeMirror);
 })(function(CodeMirror) {

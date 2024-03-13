@@ -91,10 +91,16 @@
                     <td class="px-4 py-2  text-left">@item.HoTen</td>
                     <td class="px-4 py-2  text-left">@item.GioiTinh</td>
                     <td class="px-4 py-2  text-left">@item.SoDT</td>
-                    <td class="px-4 py-2  text-center">
-                        <a asp-controller="HocVien" asp-action="Detail">Xem</a> |
-                        <a href="#">Sửa</a> |
-                        <a href="#">Xóa</a>
+                    <td class="px-4 py-2  text-right">
+                        @* <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white; border-color:#cfb263; background-color: #cfb263">Xem</a> 
+                        <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white;  border-color:#6ea3c2; background-color: #6ea3c2">Sửa</a> 
+                        <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white;  border-color:#b85c5c; background-color: #b85c5c">Xóa</a> *@
+                        <a asp-controller="HocVien" asp-action="Detail" style="color: royalblue"><i class="bi bi-info-square"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a asp-controller="HocVien" asp-action="Detail"><i class="bi bi-pencil"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a asp-controller="HocVien" asp-action="Detail" style="color: darkred"><i class="bi bi-x-circle"></i></a>
+                        
                     </td>
                 </tr>
             }

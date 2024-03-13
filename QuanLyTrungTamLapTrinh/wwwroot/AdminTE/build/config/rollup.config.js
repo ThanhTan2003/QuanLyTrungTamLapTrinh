@@ -2,7 +2,7 @@
 
 const { babel } = require('@rollup/plugin-babel')
 
-const pkg = require('../../package')
+const pkg = require('~/AdminTE/package')
 const year = new Date().getFullYear()
 const banner = `/*!
  * AdminLTE v${pkg.version} (${pkg.homepage})
