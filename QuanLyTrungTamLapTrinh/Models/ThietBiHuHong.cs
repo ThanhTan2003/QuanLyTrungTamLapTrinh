@@ -14,10 +14,11 @@ namespace QuanLyTrungTamLapTrinh.Models
         [ForeignKey("PhongHoc")]
         public int PhongHoc_Id { get; set; }
         public PhongHoc PhongHoc { get; set; }
+        public string? ViTri {  get; set; }
 
-        public DateTime NgayPhatHien { get; set; }
-        public string MoTaLoi { get; set; }
-        public string TinhTrang { get; set; } // Ví dụ: Đang sửa, Đã sửa, Cần thay thế
+        public DateTime? NgayPhatHien { get; set; }
+        public string? MoTaLoi { get; set; }
+        public string? TinhTrang { get; set; } // Ví dụ: Đang sửa, Đã sửa, Cần thay thế
         public DateTime? NgaySuaChua { get; set; } // Nullable, vì có thể chưa được sửa chữa
     }
 }

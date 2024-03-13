@@ -6,9 +6,10 @@ namespace QuanLyTrungTamLapTrinh.Models
     public class HocVien
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string HoTen { get; set; }
+        public DateTime? NgaySinh { get; set; }
 
         [DataType(DataType.PhoneNumber)]
         public string SoDT { get; set; }

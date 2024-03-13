@@ -12,7 +12,7 @@ using QuanLyTrungTamLapTrinh.Data;
 namespace QuanLyTrungTamLapTrinh.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240308205813_InitialCreate")]
+    [Migration("20240313125950_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -33,9 +33,8 @@ namespace QuanLyTrungTamLapTrinh.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("HocVien_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("HocVien_Id")
+                        .HasColumnType("int");
 
                     b.Property<int>("LichKhaiGiang_Id")
                         .HasColumnType("int");
@@ -84,8 +83,11 @@ namespace QuanLyTrungTamLapTrinh.Migrations
 
             modelBuilder.Entity("QuanLyTrungTamLapTrinh.Models.GiaoVien", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ChuyenMon")
                         .HasColumnType("nvarchar(max)");
@@ -112,6 +114,9 @@ namespace QuanLyTrungTamLapTrinh.Migrations
 
                     b.Property<int?>("Luong")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("NgaySinh")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SoCCCD")
                         .HasColumnType("nvarchar(max)");
@@ -172,8 +177,11 @@ namespace QuanLyTrungTamLapTrinh.Migrations
 
             modelBuilder.Entity("QuanLyTrungTamLapTrinh.Models.HocVien", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DiaChi")
                         .HasColumnType("nvarchar(max)");
@@ -194,6 +202,9 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                     b.Property<string>("HoTen")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("NgaySinh")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SoCCCD")
                         .HasColumnType("nvarchar(max)");
@@ -267,9 +278,8 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                     b.Property<string>("GhiChu")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GiaoVien_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("GiaoVien_Id")
+                        .HasColumnType("int");
 
                     b.Property<int>("KhoaHoc_Id")
                         .HasColumnType("int");
@@ -280,6 +290,9 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                     b.Property<string>("NgayHoc")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Nhom")
+                        .HasColumnType("int");
 
                     b.Property<int>("PhongHoc_Id")
                         .HasColumnType("int");
@@ -304,7 +317,7 @@ namespace QuanLyTrungTamLapTrinh.Migrations
 
                     b.HasIndex("KhoaKhaiGiang_Id");
 
-                    b.HasIndex("PhongHoc_Id");
+                    b.HasIndex("Nhom");
 
                     b.ToTable("LichKhaiGiang");
                 });
@@ -364,10 +377,9 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("MoTaLoi")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("NgayPhatHien")
+                    b.Property<DateTime?>("NgayPhatHien")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("NgaySuaChua")
@@ -380,7 +392,9 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TinhTrang")
-                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ViTri")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -463,7 +477,7 @@ namespace QuanLyTrungTamLapTrinh.Migrations
 
                     b.HasOne("QuanLyTrungTamLapTrinh.Models.PhongHoc", "PhongHoc")
                         .WithMany()
-                        .HasForeignKey("PhongHoc_Id")
+                        .HasForeignKey("Nhom")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

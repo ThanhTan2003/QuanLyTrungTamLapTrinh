@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuanLyTrungTamLapTrinh.Data;
-using QuanLyTrungTamLapTrinh.Models;
 
 namespace QuanLyTrungTamLapTrinh.Controllers
 {
@@ -25,133 +19,10 @@ namespace QuanLyTrungTamLapTrinh.Controllers
             return View(await _context.HocVien.ToListAsync());
         }
 
-        // GET: HocVien/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var hocVien = await _context.HocVien
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (hocVien == null)
-            {
-                return NotFound();
-            }
-
-            return View(hocVien);
-        }
-
         // GET: HocVien/Create
         public IActionResult Create()
         {
             return View();
-        }
-
-        // POST: HocVien/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,HoTen,SoDT,SoCCCD,GioiTinh,Email,DiaChi,GhiChu,TinhTrang,HinhAnh")] HocVien hocVien)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(hocVien);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(hocVien);
-        }
-
-        // GET: HocVien/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var hocVien = await _context.HocVien.FindAsync(id);
-            if (hocVien == null)
-            {
-                return NotFound();
-            }
-            return View(hocVien);
-        }
-
-        // POST: HocVien/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,HoTen,SoDT,SoCCCD,GioiTinh,Email,DiaChi,GhiChu,TinhTrang,HinhAnh")] HocVien hocVien)
-        {
-            if (id != hocVien.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(hocVien);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!HocVienExists(hocVien.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(hocVien);
-        }
-
-        // GET: HocVien/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var hocVien = await _context.HocVien
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (hocVien == null)
-            {
-                return NotFound();
-            }
-
-            return View(hocVien);
-        }
-
-        // POST: HocVien/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            var hocVien = await _context.HocVien.FindAsync(id);
-            if (hocVien != null)
-            {
-                _context.HocVien.Remove(hocVien);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool HocVienExists(string id)
-        {
-            return _context.HocVien.Any(e => e.Id == id);
         }
     }
 }

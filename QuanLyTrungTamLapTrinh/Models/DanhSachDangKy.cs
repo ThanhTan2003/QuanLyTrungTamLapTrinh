@@ -11,7 +11,7 @@ namespace QuanLyTrungTamLapTrinh.Models
         public int LichKhaiGiang_Id { get; set; }
         public LichKhaiGiang LichKhaiGiang { get; set; }
         [ForeignKey("HocVien")]
-        public string HocVien_Id { get; set; }
+        public int HocVien_Id { get; set; }
         public HocVien HocVien { get; set; }
         public DateTime NgayDangKy { get; set; }
         public string TinhTrang { get; set; }

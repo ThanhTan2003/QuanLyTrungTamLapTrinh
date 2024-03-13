@@ -14,10 +14,11 @@ namespace QuanLyTrungTamLapTrinh.Models
         public int KhoaHoc_Id { get; set; }
         public KhoaHoc KhoaHoc { get; set; }
         [ForeignKey("PhongHoc")]
+        int Nhom { get; set; }
         public int PhongHoc_Id { get; set; }
         public PhongHoc PhongHoc { get; set; }
         [ForeignKey("GiaoVien")]
-        public string GiaoVien_Id { get; set; }
+        public int GiaoVien_Id { get; set; }
         public GiaoVien GiaoVien { get; set; }
         public int SoBuoiHoc { get; set; }
         public DateTime ThoiGianBatDau { get; set; }

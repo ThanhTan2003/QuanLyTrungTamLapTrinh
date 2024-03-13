@@ -15,8 +15,10 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                 name: "GiaoVien",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     HoTen = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NgaySinh = table.Column<DateTime>(type: "datetime2", nullable: true),
                     SoDT = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SoCCCD = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GioiTinh = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -37,8 +39,10 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                 name: "HocVien",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     HoTen = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NgaySinh = table.Column<DateTime>(type: "datetime2", nullable: true),
                     SoDT = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SoCCCD = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GioiTinh = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -121,8 +125,9 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     KhoaKhaiGiang_Id = table.Column<int>(type: "int", nullable: false),
                     KhoaHoc_Id = table.Column<int>(type: "int", nullable: false),
+                    Nhom = table.Column<int>(type: "int", nullable: false),
                     PhongHoc_Id = table.Column<int>(type: "int", nullable: false),
-                    GiaoVien_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    GiaoVien_Id = table.Column<int>(type: "int", nullable: false),
                     SoBuoiHoc = table.Column<int>(type: "int", nullable: false),
                     ThoiGianBatDau = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ThoiGianKetThuc = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -152,8 +157,8 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LichKhaiGiang_PhongHoc_PhongHoc_Id",
-                        column: x => x.PhongHoc_Id,
+                        name: "FK_LichKhaiGiang_PhongHoc_Nhom",
+                        column: x => x.Nhom,
                         principalTable: "PhongHoc",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -194,9 +199,10 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ThietBi_Id = table.Column<int>(type: "int", nullable: false),
                     PhongHoc_Id = table.Column<int>(type: "int", nullable: false),
-                    NgayPhatHien = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MoTaLoi = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TinhTrang = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ViTri = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NgayPhatHien = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MoTaLoi = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TinhTrang = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NgaySuaChua = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -223,7 +229,7 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LichKhaiGiang_Id = table.Column<int>(type: "int", nullable: false),
-                    HocVien_Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    HocVien_Id = table.Column<int>(type: "int", nullable: false),
                     NgayDangKy = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TinhTrang = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -311,9 +317,9 @@ namespace QuanLyTrungTamLapTrinh.Migrations
                 column: "KhoaKhaiGiang_Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LichKhaiGiang_PhongHoc_Id",
+                name: "IX_LichKhaiGiang_Nhom",
                 table: "LichKhaiGiang",
-                column: "PhongHoc_Id");
+                column: "Nhom");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ThietBiHuHong_PhongHoc_Id",

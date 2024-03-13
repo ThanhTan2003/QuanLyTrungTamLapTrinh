@@ -5,8 +5,9 @@ namespace QuanLyTrungTamLapTrinh.Models
     public class GiaoVien
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string HoTen { get; set; }
+        public DateTime? NgaySinh { get; set; }
 
         [DataType(DataType.PhoneNumber)]
         public string SoDT { get; set; }

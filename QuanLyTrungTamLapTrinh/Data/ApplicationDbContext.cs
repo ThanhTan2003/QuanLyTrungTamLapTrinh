@@ -21,5 +21,7 @@ namespace QuanLyTrungTamLapTrinh.Data
         public DbSet<PhongHoc> PhongHoc { get; set; }
         public DbSet<ThietBi> ThietBi { get; set; }
         public DbSet<ThietBiHuHong> ThietBiHuHong { get; set; }
+
+
     }
 }
