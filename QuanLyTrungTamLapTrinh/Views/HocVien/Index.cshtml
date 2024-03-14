@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<QuanLyTrungTamLapTrinh.Models.HocVien>
 
+@{
+    ViewData["Title"] = "Index";
+}
 <script>
     function removeAccents(str) {
         return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -95,11 +98,11 @@
                         @* <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white; border-color:#cfb263; background-color: #cfb263">Xem</a> 
                         <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white;  border-color:#6ea3c2; background-color: #6ea3c2">Sửa</a> 
                         <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white;  border-color:#b85c5c; background-color: #b85c5c">Xóa</a> *@
-                        <a asp-controller="HocVien" asp-action="Detail" style="color: royalblue"><i class="bi bi-info-square"></i></a>
+                        <a asp-controller="HocVien" asp-action="Detail" asp-route-id="@item.Id" style="color: royalblue"><i class="bi bi-info-square"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a asp-controller="HocVien" asp-action="Detail"><i class="bi bi-pencil"></i></a>
+                        <a asp-controller="HocVien" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a asp-controller="HocVien" asp-action="Detail" style="color: darkred"><i class="bi bi-x-circle"></i></a>
+                        <a asp-controller="HocVien" asp-action="Delete" asp-route-id="@item.Id" style="color: darkred"><i class="bi bi-x-circle"></i></a>
                         
                     </td>
                 </tr>

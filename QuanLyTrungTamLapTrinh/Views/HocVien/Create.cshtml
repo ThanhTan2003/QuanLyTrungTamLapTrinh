@@ -1,55 +1,65 @@
-﻿@model HocVien
+﻿@model QuanLyTrungTamLapTrinh.Models.HocVien
 
+@{
+    ViewData["Title"] = "Create";
+}
 
 <div class="container mx-auto">
     <br />
     <h1 class="text-2xl font-bold mb-4 text-left">THÊM MỚI HỌC VIÊN</h1>
     <hr><br>
-    <form action="Create" method="post" class="grid grid-cols-2 gap-4" enctype="multipart/form-data">
+    <form asp-action="Create" class="grid grid-cols-2 gap-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Họ tên</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" >
+            <label asp-for="HoTen">Họ tên</label>
+            <input type="text" class="form-control" asp-for="HoTen">
+            <span asp-validation-for="HoTen" class="text-danger"></span>
         </div>
-        
-        <div class="form-group">
-            <label>Ngày sinh:</label>
-            <div class="input-group date" id="reservationdate" data-target-input="nearest">
-                <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" />
 
+        <div class="form-group">
+            <label asp-for="NgaySinh">Ngày sinh:</label>
+            <div class="input-group date">
+                <input asp-for="NgaySinh" class="form-control datetimepicker-input" />
+                <span asp-validation-for="NgaySinh" class="text-danger"></span>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="exampleInputEmail1">Số điện thoại</label>
-            <input type="number" class="form-control" id="exampleInputEmail1">
+            <label asp-for="SoDT">Số điện thoại</label>
+            <input asp-for="SoDT" type="number" class="form-control">
+            <span asp-validation-for="SoDT" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Số CCCD</label>
-            <input type="number" class="form-control" id="exampleInputEmail1">
+            <label asp-for="SoCCCD">Số Căn cước công dân</label>
+            <input asp-for="SoCCCD" type="number" class="form-control">
+            <span asp-validation-for="SoCCCD" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label>Giới tính</label>
-            <select class="form-control select2bs4" style="width: 100%;">
+            <label asp-for="GioiTinh">Giới tính</label>
+            <select asp-for="GioiTinh" class="form-control select2bs4" style="width: 100%;">
                 <option selected="selected">- Chọn -</option>
                 <option>Nam</option>
                 <option>Nữ</option>
             </select>
+            <span asp-validation-for="GioiTinh" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="email" class="form-control">
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label>Địa chỉ</label>
-            <textarea class="form-control" rows="3"></textarea>
+            <label asp-for="DiaChi">Địa chỉ</label>
+            <textarea asp-for="DiaChi" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="DiaChi" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label>Ghi chú</label>
-            <textarea class="form-control" rows="3"></textarea>
+            <label asp-for="GhiChu">Ghi chú</label>
+            <textarea asp-for="GhiChu" class="form-control" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label>Tình trạng</label>
-            <select class="form-control select2bs4" style="width: 100%;">
+            <label asp-for="TinhTrang">Tình trạng</label>
+            <select asp-for="TinhTrang" class="form-control select2bs4" style="width: 100%;">
                 <option selected="selected">- Chọn -</option>
                 <option>Đăng ký mới</option>
                 <option>Đang học</option>
@@ -58,19 +68,91 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="exampleInputFile">Hình ảnh</label>
+            <label asp-for="HinhAnh">Hình ảnh</label>
             <div class="input-group">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="exampleInputFile" accept="image/png, image/jpeg, image/gif">
+                    <input type="file" class="custom-file-input" asp-for="HinhAnh" accept="image/png, image/jpeg, image/gif">
                     <label class="custom-file-label" for="exampleInputFile"></label>
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            &nbsp;
+        </div>
+        <div class="flex justify-end">
+            <button type="submit" value="Create" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Thêm mới</button>
+        </div>
     </form>
     <br />
-    <div class="flex justify-end">
-        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Thêm mới</button>
-    </div>
 
 </div>
+
+@* <h1>Create</h1>
+
+<h4>HocVien</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="HoTen" class="control-label"></label>
+                <input asp-for="HoTen" class="form-control" />
+                <span asp-validation-for="HoTen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NgaySinh" class="control-label"></label>
+                <input asp-for="NgaySinh" class="form-control" />
+                <span asp-validation-for="NgaySinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoDT" class="control-label"></label>
+                <input asp-for="SoDT" class="form-control" />
+                <span asp-validation-for="SoDT" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoCCCD" class="control-label"></label>
+                <input asp-for="SoCCCD" class="form-control" />
+                <span asp-validation-for="SoCCCD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GioiTinh" class="control-label"></label>
+                <input asp-for="GioiTinh" class="form-control" />
+                <span asp-validation-for="GioiTinh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaChi" class="control-label"></label>
+                <input asp-for="DiaChi" class="form-control" />
+                <span asp-validation-for="DiaChi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GhiChu" class="control-label"></label>
+                <input asp-for="GhiChu" class="form-control" />
+                <span asp-validation-for="GhiChu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TinhTrang" class="control-label"></label>
+                <input asp-for="TinhTrang" class="form-control" />
+                <span asp-validation-for="TinhTrang" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HinhAnh" class="control-label"></label>
+                <input asp-for="HinhAnh" class="form-control" />
+                <span asp-validation-for="HinhAnh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div> *@
 
