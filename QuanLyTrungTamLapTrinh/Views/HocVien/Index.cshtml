@@ -45,8 +45,7 @@
 
 <div class="container mx-auto">
     <br />
-    <h1 class="text-2xl font-bold">DANH SÁCH HỌC VIÊN</h1>
-    <BR />
+    <h4 class="text-2xl font-bold TieuDe" >DANH SÁCH HỌC VIÊN</h4>
     <hr />
     <br />
     <div class="flex justify-between items-center mb-4">
@@ -72,6 +71,7 @@
                 <th class="px-4 py-2 ">Họ tên</th>
                 <th class="px-4 py-2 ">Giới tính</th>
                 <th class="px-4 py-2 ">Số điện thoại</th>
+                <th class="px-4 py-2 ">Tình trạng</th>
                 <th class="px-4 py-2 text-center"></th>
             </tr>
         </thead>
@@ -94,11 +94,12 @@
                     <td class="px-4 py-2  text-left">@item.HoTen</td>
                     <td class="px-4 py-2  text-left">@item.GioiTinh</td>
                     <td class="px-4 py-2  text-left">@item.SoDT</td>
+                    <td class="px-4 py-2  text-left">@item.TinhTrang</td>
                     <td class="px-4 py-2  text-right">
                         @* <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white; border-color:#cfb263; background-color: #cfb263">Xem</a> 
                         <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white;  border-color:#6ea3c2; background-color: #6ea3c2">Sửa</a> 
                         <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white;  border-color:#b85c5c; background-color: #b85c5c">Xóa</a> *@
-                        <a asp-controller="HocVien" asp-action="Detail" asp-route-id="@item.Id" style="color: royalblue"><i class="bi bi-info-square"></i></a>
+                        <a asp-controller="HocVien" asp-action="Details" asp-route-id="@item.Id" style="color: royalblue"><i class="bi bi-info-square"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a asp-controller="HocVien" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

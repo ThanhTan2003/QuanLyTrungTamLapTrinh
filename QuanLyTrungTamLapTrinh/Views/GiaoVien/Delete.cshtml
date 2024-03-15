@@ -4,7 +4,100 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<div class="container mx-auto">
+    <br />
+    <h4 class="text-2xl font-bold ext-left TieuDe">XÓA THÔNG TIN GIÁO VIÊN</h4>
+    <hr><br>
+    <form asp-action="Delete" class="grid grid-cols-2 gap-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="HoTen">Họ tên</label>
+            <input type="text" class="form-control" asp-for="HoTen" disabled>
+            <span asp-validation-for="HoTen" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NgaySinh">Ngày sinh:</label>
+            <div class="input-group date">
+                <input asp-for="NgaySinh" class="form-control datetimepicker-input" disabled />
+                <span asp-validation-for="NgaySinh" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="SoDT">Số điện thoại</label>
+            <input asp-for="SoDT" type="number" class="form-control" disabled>
+            <span asp-validation-for="SoDT" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SoCCCD">Số Căn cước công dân</label>
+            <input asp-for="SoCCCD" type="number" class="form-control" disabled>
+            <span asp-validation-for="SoCCCD" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="GioiTinh">Giới tính</label>
+            <select asp-for="GioiTinh" class="form-control select2bs4" style="width: 100%;" disabled>
+                <option selected="selected">- Chọn -</option>
+                <option>Nam</option>
+                <option>Nữ</option>
+            </select>
+            <span asp-validation-for="GioiTinh" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="email" class="form-control" disabled>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ChuyenMon">Chuyên môn</label>
+            <input asp-for="ChuyenMon" type="text" class="form-control" disabled>
+            <span asp-validation-for="ChuyenMon" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Luong">Lương</label>
+            <input asp-for="Luong" type="number" class="form-control" disabled>
+            <span asp-validation-for="Luong" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DiaChi">Địa chỉ</label>
+            <textarea asp-for="DiaChi" class="form-control" rows="3" disabled></textarea>
+            <span asp-validation-for="DiaChi" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="GhiChu">Ghi chú</label>
+            <textarea asp-for="GhiChu" class="form-control" rows="3" disabled></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="TinhTrang">Tình trạng</label>
+            <select asp-for="TinhTrang" class="form-control select2bs4" style="width: 100%;" disabled>
+                <option selected="selected">- Chọn -</option>
+                <option>Đăng ký mới</option>
+                <option>Đang dạy</option>
+                <option>Thỉnh giảng</option>
+                <option>Đã nghỉ dạy</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="HinhAnh">Hình ảnh</label>
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" asp-for="HinhAnh" accept="image/png, image/jpeg, image/gif" disabled>
+                    <label class="custom-file-label" for="exampleInputFile"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            &nbsp;
+        </div>
+        <div class="flex justify-end">
+            <button type="submit" value="Delete" class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">&nbsp;&nbsp;&nbsp; Xóa &nbsp;&nbsp;&nbsp;</button>
+        </div>
+    </form>
+    <br />
+
+</div>
+
+@* <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -91,3 +184,4 @@
         <a asp-action="Index">Back to List</a>
     </form>
 </div>
+ *@
