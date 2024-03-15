@@ -4,7 +4,60 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="container mx-auto">
+    <br />
+    <h4 class="text-2xl font-bold ext-left TieuDe">THÊM THÔNG TIN KHÓA HỌC MỚI</h4>
+    <hr><br>
+    <form asp-action="Create" class="grid grid-cols-2 gap-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="TenKhoaHoc">Tên khóa học <span style="color: red">(*)</span></label>
+            <input type="text" class="form-control" asp-for="TenKhoaHoc">
+            <span asp-validation-for="TenKhoaHoc" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="HocPhi">Học phí <span style="color: red">(*)</span></label>
+            <input asp-for="HocPhi" type="number" class="form-control">
+            <span asp-validation-for="HocPhi" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MoTa">Mô tả</label>
+            <textarea asp-for="MoTa" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="MoTa" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GhiChu">Ghi chú</label>
+            <textarea asp-for="GhiChu" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="TinhTrang">Tình trạng <span style="color: red">(*)</span></label>
+            <select asp-for="TinhTrang" class="form-control select2bs4" style="width: 100%;">
+                <option selected="selected">- Chưa chọn -</option>
+                <option>Đang mở</option>
+                <option>Ngừng đào tạo</option>
+                <option>Tạm ngừng</option>
+                <option>Chờ phê duyệt</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            &nbsp;
+        </div>
+        <div class="form-group">
+            &nbsp;
+        </div>
+        <div class="flex justify-end">
+            <button type="submit" value="Create" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Thêm mới</button>
+        </div>
+    </form>
+    <br />
+
+</div>
+
+@* <h1>Create</h1>
 
 <h4>KhoaHoc</h4>
 <hr />
@@ -46,7 +99,7 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
 
 @* @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
