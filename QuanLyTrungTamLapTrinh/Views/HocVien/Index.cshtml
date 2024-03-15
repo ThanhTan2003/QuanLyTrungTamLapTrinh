@@ -56,7 +56,7 @@
                 Tìm
             </button>
         </div>
-        <a asp-controller="ThietBi" asp-action="Create" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto">
+        <a asp-controller="HocVien" asp-action="Create" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto">
             + Thêm học viên mới
         </a>
     </div>
@@ -178,3 +178,24 @@
         };
     </script>
 </div>
+
+<script>
+            document.addEventListener('DOMContentLoaded', function() {
+        // Lấy tất cả các liên kết trong menu sidebar
+        var menuLinks = document.querySelectorAll('.nav-sidebar .nav-link');
+
+        // Thêm sự kiện 'click' cho mỗi liên kết
+        menuLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                // Loại bỏ class 'active' khỏi tất cả các mục
+                menuLinks.forEach(function(item) {
+                    item.classList.remove('active');
+                });
+
+                // Thêm class 'active' vào mục được nhấp
+                this.classList.add('active');
+            });
+        });
+    });
+
+</script>

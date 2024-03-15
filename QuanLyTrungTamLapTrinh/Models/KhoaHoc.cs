@@ -11,5 +11,6 @@ namespace QuanLyTrungTamLapTrinh.Models
         public string? MoTa { get; set; }
         public int HocPhi { get; set; }
         public string? GhiChu { get; set; }
+        public string? TinhTrang {  get; set; }
     }
 }

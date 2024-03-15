@@ -42,6 +42,10 @@
         .TieuDe{
             color: #18415e;
         }
+        .nav-link.active-link {
+        background-color:  rgba(255, 255, 255,0.1); /* Màu nền xanh bạn muốn */  /* rgba(255, 255, 255,0.1) */
+        color: red;
+}
     </style>
 
 </head>
@@ -83,8 +87,8 @@
                         <!-- Add icons to the links using the .nav-icon class
                              with font-awesome or any other icon font library -->
                         <br />
-                        <li class="nav-item menu-open">
-                            <a asp-controller="Home" asp-action="Index" class="nav-link active" style="font-size: 17px">
+                        <li class="nav-item">  @* menu-open *@
+                            <a asp-controller="Home" asp-action="Index" class="nav-link @AddActiveClass("Home", "Index")" style="font-size: 17px"> @* active *@
                                 @* <i class="nav-icon fas fa-tachometer-alt"></i> *@
                                 <i class="fa-solid fa-house"></i>
                                 <p>
@@ -94,17 +98,17 @@
                         </li>
 
                         <li class="nav-item">
-                            <a asp-controller="GiaoVien" asp-action="Index" class="nav-link" style="font-size: 17px">
+                            <a asp-controller="GiaoVien" asp-action="Index" class="nav-link @AddActiveClass("GiaoVien", "Index")" style="font-size: 17px">
                                 @* <i class="nav-icon fas fa-tachometer-alt"></i> *@
                                 <i class="fa-solid fa-chalkboard-user"></i>
                                 <p>
-                                    &nbsp;&nbsp;Giáo viên
+                                    &nbsp;&nbsp; Giáo viên
                                 </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a asp-controller="HocVien" asp-area="" asp-action="Index" class="nav-link" style="font-size: 17px">
+                            <a asp-controller="HocVien" asp-area="" asp-action="Index" class="nav-link @AddActiveClass("HocVien", "Index")" style="font-size: 17px">
                                 @* <i class="nav-icon fas fa-tachometer-alt"></i> *@
                                 <i class="fa-solid fa-graduation-cap"></i>
                                 <p>
@@ -114,26 +118,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a asp-controller="ThietBi" asp-action="Index" class="nav-link" style="font-size: 17px">
-                                @* <i class="nav-icon fas fa-tachometer-alt"></i> *@
-                                <i class="fa-solid fa-desktop"></i>
-                                <p>
-                                    &nbsp;&nbsp;Thiết bị
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-controller="PhongHoc" asp-action="Index" class="nav-link" style="font-size: 17px">
-                                @* <i class="nav-icon fas fa-tachometer-alt"></i> *@
-                                <i class="fa-solid fa-people-roof"></i>
-                                <p>
-                                    &nbsp;&nbsp;Phòng học
-                                </p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a asp-controller="KhoaHoc" asp-action="Index" class="nav-link" style="font-size: 17px">
+                            <a asp-controller="KhoaHoc" asp-action="Index" class="nav-link @AddActiveClass("KhoaHoc", "Index")" style="font-size: 17px">
                                 @* <i class="nav-icon fas fa-tachometer-alt"></i> *@
                                 <i class="fa-sharp fa-regular fa-calendar-days"></i>
                                 <p>
@@ -143,7 +128,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a asp-controller="LichkhaiGiang" asp-action="Index" class="nav-link" style="font-size: 17px">
+                            <a asp-controller="LichkhaiGiang" asp-action="Index" class="nav-link @AddActiveClass("LichKhaiGiang", "Index")" style="font-size: 17px">
                                 @* <i class="nav-icon fas fa-tachometer-alt"></i> *@
                                 <i class="fa-solid fa-clipboard-list"></i>
                                 <p>
@@ -151,8 +136,29 @@
                                 </p>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a asp-controller="KhoaHoc" asp-action="Index" class="nav-link" style="font-size: 17px">
+                            <a asp-controller="ThietBi" asp-action="Index" class="nav-link @AddActiveClass("ThietBi", "Index")" style="font-size: 17px">
+                                @* <i class="nav-icon fas fa-tachometer-alt"></i> *@
+                                <i class="fa-solid fa-desktop"></i>
+                                <p>
+                                    &nbsp;&nbsp;Thiết bị
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="PhongHoc" asp-action="Index" class="nav-link @AddActiveClass("PhongHoc", "Index")" style="font-size: 17px">
+                                @* <i class="nav-icon fas fa-tachometer-alt"></i> *@
+                                <i class="fa-solid fa-people-roof"></i>
+                                <p>
+                                    &nbsp;&nbsp;Phòng học
+                                </p>
+                            </a>
+                        </li>
+
+                        
+                        <li class="nav-item">
+                            <a asp-controller="KhoaHoc" asp-action="Index" class="nav-link @AddActiveClass("QuanTriTaiKhoan", "Index")" style="font-size: 17px">
                                 @* <i class="nav-icon fas fa-tachometer-alt"></i> *@
                                 <i class="fa-regular fa-user"></i>
                                 <p>
@@ -227,7 +233,27 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="~/AdminTE/dist/js/pages/dashboard.js"></script>
 
+    <!-- jQuery -->
+    <script src="~/AdminTE/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/AdminTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/AdminTE/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
 
+
+    <script>
+        @functions{
+    public string AddActiveClass(string controller, string action)
+    {
+        var currentAction = (string)ViewContext.RouteData.Values["action"];
+        var currentController = (string)ViewContext.RouteData.Values["controller"];
+
+        return controller == currentController && action == currentAction ? "active-link" : string.Empty;
+    }
+}
+
+    </script>
 </body>
 </html>
 
