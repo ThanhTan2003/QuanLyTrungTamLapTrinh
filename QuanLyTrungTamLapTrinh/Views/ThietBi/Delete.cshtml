@@ -4,7 +4,60 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<div class="container mx-auto">
+    <br />
+    <h4 class="text-2xl font-bold ext-left TieuDe">XÓA THÔNG TIN THIẾT BỊ MỚI</h4>
+    <hr><br>
+    <form asp-action="Delete" class="grid grid-cols-2 gap-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="TenTB">Tên thiết bị</label>
+            <input type="text" class="form-control" asp-for="TenTB" disabled>
+            <span asp-validation-for="TenTB" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhanLoai">Phân loại </label>
+            <select asp-for="PhanLoai" class="form-control select2bs4" style="width: 100%;" disabled>
+                <option selected="selected">- Chưa chọn -</option>
+                <option>Máy tính</option>
+                <option>Bàn học</option>
+                <option>Máy chiếu</option>
+                <option>Thiết bị điện</option>
+                <option>Khác</option>
+            </select>
+            <span asp-validation-for="PhanLoai" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MoTa">Mô tả </span></label>
+            <textarea asp-for="MoTa" class="form-control" rows="3" disabled></textarea>
+            <span asp-validation-for="MoTa" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="GhiChu">Ghi chú</label>
+            <textarea asp-for="GhiChu" class="form-control" rows="3" disabled></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="SL">Số lượng</label>
+            <input asp-for="SL" type="number" class="form-control" disabled>
+            <span asp-validation-for="SL" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            &nbsp;
+        </div>
+        <div class="form-group">
+            &nbsp;
+        </div>
+        <div class="flex justify-end">
+            <button type="submit" value="Delete" class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">&nbsp;&nbsp;&nbsp; Xóa &nbsp;&nbsp;&nbsp;</button>
+        </div>
+    </form>
+    <br />
+
+</div>
+
+@* <h1>Delete</h1>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -29,6 +82,18 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.GhiChu)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SL)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SL)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhanLoai)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhanLoai)
+        </dd>
     </dl>
     
     <form asp-action="Delete">
@@ -36,4 +101,4 @@
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>
-</div>
+</div> *@

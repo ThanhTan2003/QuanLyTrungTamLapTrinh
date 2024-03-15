@@ -4,7 +4,181 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<script>
+    function removeAccents(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function searchStudents() {
+        var input, filter, table, tr, td, i, j, txtValue;
+        input = document.getElementById("searchInput");
+        filter = removeAccents(input.value); // Chuyển ký tự tìm kiếm về tiếng Anh không dấu
+        table = document.getElementById("studentTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            var matchFound = false;
+            td = tr[i].getElementsByTagName("td");
+            var isHeaderRow = tr[i].getElementsByTagName("th").length > 0;
+            for (j = 0; j < td.length; j++) {
+                if (td[j]) {
+                    txtValue = td[j].textContent || td[j].innerText;
+                    // Chuyển đổi cả từ khóa tìm kiếm và nội dung của ô thành chữ thường không dấu để so sánh
+                    var cellText = removeAccents(txtValue.toLowerCase());
+                    var searchTerm = filter.toLowerCase();
+                    if (cellText.indexOf(searchTerm) > -1) {
+                        matchFound = true;
+                        break;
+                    }
+                }
+            }
+            if (matchFound || isHeaderRow) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+
+
+
+<div class="container mx-auto">
+    <br />
+    <h4 class="text-2xl font-bold TieuDe">DANH SÁCH THIẾT BỊ</h4>
+    <hr />
+    <br />
+    <div class="flex justify-between items-center mb-4">
+        <div class="flex items-center">
+            <input id="searchInput" type="text" class="border-2 border-gray-300 rounded-lg py-2 px-4 mr-2"
+                   placeholder="Tìm kiếm thiết bị">
+            <button onclick="searchStudents()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Tìm
+            </button>
+        </div>
+        <a asp-controller="ThietBi" asp-action="Create" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto">
+            + Thêm thiết bị mới
+        </a>
+    </div>
+
+    <b><p>Tổng số học viên: </p></b><br />
+
+    <table id="studentTable" class="table-auto w-full" @* style="border-radius: 10px; overflow: hidden;" *@>
+        <!-- Bảng của bạn -->
+        <thead>
+            <tr class="border bg-gray-100" style="border-bottom: 2px solid black; padding-bottom: 5px;">
+                <th class="px-4 py-2 text-center">ID</th>
+                <th class="px-4 py-2 ">Tên thiết bị</th>
+                <th class="px-4 py-2 ">Phân loại</th>
+                <th class="px-4 py-2 ">Số lượng</th>
+                <th class="px-4 py-2 text-center"></th>
+            </tr>
+        </thead>
+        <tbody style="background-color: white">
+            @* <tr class="border">
+            <td class="px-4 py-2  text-center">1</td>
+            <td class="px-4 py-2  text-left">Nguyễn Văn A</td>
+            <td class="px-4 py-2  text-left">Nam</td>
+            <td class="px-4 py-2  text-left">0123456789</td>
+            <td class="px-4 py-2  text-center">
+            <a href="#">Xem</a> |
+            <a href="#">Sửa</a> |
+            <a href="#">Xóa</a>
+            </td>
+            </tr> *@
+            @foreach (var item in Model)
+            {
+                <tr class="border">
+                    <td class="px-4 py-2  text-center">@item.Id</td>
+                    <td class="px-4 py-2  text-left">@item.TenTB</td>
+                    <td class="px-4 py-2  text-left">@item.PhanLoai</td>
+                    <td class="px-4 py-2  text-left">@item.SL</td>
+                    <td class="px-4 py-2  text-right">
+                        @* <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white; border-color:#cfb263; background-color: #cfb263">Xem</a>
+                    <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white;  border-color:#6ea3c2; background-color: #6ea3c2">Sửa</a>
+                    <a asp-controller="HocVien" asp-action="Detail" class="btn btn-warning" style="color:white;  border-color:#b85c5c; background-color: #b85c5c">Xóa</a> *@
+                        <a asp-controller="ThietBi" asp-action="Details" asp-route-id="@item.Id" style="color: royalblue"><i class="bi bi-info-square"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a asp-controller="ThietBi" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a asp-controller="ThietBi" asp-action="Delete" asp-route-id="@item.Id" style="color: darkred"><i class="bi bi-x-circle"></i></a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="flex items-center justify-between mt-4">
+        <div class="text-gray-500" style="font-size: 17px"><span>Trang: <span id="currentPage">1</span> / <span id="totalPages">...</span></span></div>
+        <div class="flex">
+            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2" onclick="goToPreviousPage()">
+                <
+            </button>
+
+            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2">
+                ...
+            </button>
+
+            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" onclick="goToNextPage()">
+                >
+            </button>
+        </div>
+    </div>
+
+
+
+    <div class="container mx-auto">
+        <!-- Bỏ phần code HTML của bạn ở đây -->
+        <!--Thêm nút điều hướng-->
+        <div style="width: 50">
+            @* <button lass="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="goToPreviousPage()">Trước</button> *@
+            @* <span>Trang: <span id="currentPage">1</span> / <span id="totalPages">...</span></span> *@
+            @* <button lass="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="goToNextPage()">Sau</button> *@
+        </div>
+    </div>
+    <script>
+        document.getElementById("currentPage").textContent = currentPage;
+        document.getElementById("totalPages").textContent = totalPages;
+        var currentPage = 1;
+        var rowsPerPage = 11;
+        var table = document.getElementById("studentTable");
+        var rows = table.getElementsByTagName("tr");
+        var totalPages = Math.ceil(rows.length / rowsPerPage);
+
+        function showPage(page) {
+            for (var i = 0; i < rows.length; i++) {
+                if (i === 0 || (i < page * rowsPerPage && i >= (page - 1) * rowsPerPage)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+            document.getElementById("currentPage").textContent = page;
+            document.getElementById("totalPages").textContent = totalPages;
+        }
+
+        function goToPreviousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        function goToNextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        window.onload = function () {
+            showPage(1); // Hiển thị trang đầu tiên khi trang được tải
+        };
+    </script>
+</div>
+
+@* <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -20,6 +194,12 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.GhiChu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhanLoai)
             </th>
             <th></th>
         </tr>
@@ -37,6 +217,12 @@
                 @Html.DisplayFor(modelItem => item.GhiChu)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.SL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhanLoai)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
@@ -44,4 +230,4 @@
         </tr>
 }
     </tbody>
-</table>
+</table> *@

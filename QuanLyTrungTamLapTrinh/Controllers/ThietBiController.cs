@@ -54,7 +54,7 @@ namespace QuanLyTrungTamLapTrinh.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TenTB,MoTa,GhiChu")] ThietBi thietBi)
+        public async Task<IActionResult> Create([Bind("Id,TenTB,MoTa,GhiChu,SL,PhanLoai")] ThietBi thietBi)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace QuanLyTrungTamLapTrinh.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,TenTB,MoTa,GhiChu")] ThietBi thietBi)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TenTB,MoTa,GhiChu,SL,PhanLoai")] ThietBi thietBi)
         {
             if (id != thietBi.Id)
             {

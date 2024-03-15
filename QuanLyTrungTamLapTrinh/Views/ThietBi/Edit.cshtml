@@ -4,7 +4,60 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="container mx-auto">
+    <br />
+    <h4 class="text-2xl font-bold ext-left TieuDe">CẬP NHẬT THÔNG TIN THIẾT BỊ MỚI</h4>
+    <hr><br>
+    <form asp-action="Edit" class="grid grid-cols-2 gap-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="TenTB">Tên thiết bị <span style="color: red">(*)</span></label>
+            <input type="text" class="form-control" asp-for="TenTB">
+            <span asp-validation-for="TenTB" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhanLoai">Phân loại </label>
+            <select asp-for="PhanLoai" class="form-control select2bs4" style="width: 100%;">
+                <option selected="selected">- Chưa chọn -</option>
+                <option>Máy tính</option>
+                <option>Bàn học</option>
+                <option>Máy chiếu</option>
+                <option>Thiết bị điện</option>
+                <option>Khác</option>
+            </select>
+            <span asp-validation-for="PhanLoai" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MoTa">Mô tả</label>
+            <textarea asp-for="MoTa" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="MoTa" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="GhiChu">Ghi chú</label>
+            <textarea asp-for="GhiChu" class="form-control" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label asp-for="SL">Số lượng</label>
+            <input asp-for="SL" type="number" class="form-control">
+            <span asp-validation-for="SL" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            &nbsp;
+        </div>
+        <div class="form-group">
+            &nbsp;
+        </div>
+        <div class="flex justify-end">
+            <button type="submit" value="Edit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Cập nhật</button>
+        </div>
+    </form>
+    <br />
+
+</div>
+
+@* <h1>Edit</h1>
 
 <h4>ThietBi</h4>
 <hr />
@@ -29,6 +82,16 @@
                 <span asp-validation-for="GhiChu" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="SL" class="control-label"></label>
+                <input asp-for="SL" class="form-control" />
+                <span asp-validation-for="SL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhanLoai" class="control-label"></label>
+                <input asp-for="PhanLoai" class="form-control" />
+                <span asp-validation-for="PhanLoai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -37,8 +100,8 @@
 
 <div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@
 
-@section Scripts {
+@* @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+} *@
