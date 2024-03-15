@@ -11,7 +11,7 @@
     <form asp-action="Create" class="grid grid-cols-2 gap-4">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="HoTen">Họ tên</label>
+            <label asp-for="HoTen">Họ tên <span style="color: red">(*)</span></label>
             <input type="text" class="form-control" asp-for="HoTen">
             <span asp-validation-for="HoTen" class="text-danger"></span>
         </div>
@@ -25,7 +25,7 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="SoDT">Số điện thoại</label>
+            <label asp-for="SoDT">Số điện thoại <span style="color: red">(*)</span></label>
             <input asp-for="SoDT" type="number" class="form-control">
             <span asp-validation-for="SoDT" class="text-danger"></span>
         </div>
@@ -35,7 +35,7 @@
             <span asp-validation-for="SoCCCD" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="GioiTinh">Giới tính</label>
+            <label asp-for="GioiTinh">Giới tính <span style="color: red">(*)</span></label>
             <select asp-for="GioiTinh" class="form-control select2bs4" style="width: 100%;">
                 <option selected="selected">- Chưa chọn -</option>
                 <option>Nam</option>
@@ -58,7 +58,7 @@
             <textarea asp-for="GhiChu" class="form-control" rows="3"></textarea>
         </div>
         <div class="form-group">
-            <label asp-for="TinhTrang">Tình trạng</label>
+            <label asp-for="TinhTrang">Tình trạng <span style="color: red">(*)</span></label>
             <select asp-for="TinhTrang" class="form-control select2bs4" style="width: 100%;">
                 <option selected="selected">- Chưa chọn -</option>
                 <option>Đăng ký mới</option>
